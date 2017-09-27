@@ -31,78 +31,78 @@ public class PointOfSaleController implements Initializable{
     private boolean isCashier;
 
     @FXML
-    public Label netLabel, cashLabel, totalLabel, texLabel, changeLabel;
+    private Label netLabel, cashLabel, totalLabel, texLabel, changeLabel;
     @FXML
-    public Button payButton, oneButton, twoButton, threeButton, fourButton, fiveButton, sixButton, sevenButton, eightButton, nineButton, zeroButton, deleteButton, doneButton, dotButton, logoutButton, backspaceButton;
+    private Button payButton, oneButton, twoButton, threeButton, fourButton, fiveButton, sixButton, sevenButton, eightButton, nineButton, zeroButton, deleteButton, enterButton, dotButton, logoutButton, backspaceButton;
 
     public PointOfSaleController() {
         isCashier = true;
     }
-
-    public void handleBtnNumber0() {
+    @FXML
+    private void handleBtnNumber0() {
         if (inputValue.addDot( "0" ).equals( "." )) {
             cashLabel.setText( inputValue.toString() );
         } else {
             appendNumberToInput( "0" );
         }
     }
-
-    public void handleBtnNumber1() {
+    @FXML
+    private void handleBtnNumber1() {
         if (inputValue.addDot( "1" ).equals( "." )) {
             cashLabel.setText( inputValue.toString() );
         } else {
             appendNumberToInput( "1" );
         }
     }
-
-    public void handleBtnNumber2() {
+    @FXML
+    private void handleBtnNumber2() {
         if (inputValue.addDot( "2" ).equals( "." )) {
             cashLabel.setText( inputValue.toString() );
         } else {
             appendNumberToInput( "2" );
         }
     }
-
-    public void handleBtnNumber3() {
+    @FXML
+    private void handleBtnNumber3() {
         if (inputValue.addDot( "3" ).equals( "." )) {
             cashLabel.setText( inputValue.toString() );
         } else {
             appendNumberToInput( "3" );
         }
     }
-
-    public void handleBtnNumber4() {
+    @FXML
+    private void handleBtnNumber4() {
         if (inputValue.addDot( "4" ).equals( "." )) {
             cashLabel.setText( inputValue.toString() );
         } else {
             appendNumberToInput( "4" );
         }
     }
-
-    public void handleBtnNumber5() {
+    @FXML
+    private void handleBtnNumber5() {
         if (inputValue.addDot( "5" ).equals( "." )) {
             cashLabel.setText( inputValue.toString() );
         } else {
             appendNumberToInput( "5" );
         }
     }
-
-    public void handleBtnNumber6() {
+    @FXML
+    private void handleBtnNumber6() {
         if (inputValue.addDot( "6" ).equals( "." )) {
             cashLabel.setText( inputValue.toString() );
         } else {
             appendNumberToInput( "6" );
         }
     }
-
-    public void handleBtnNumber7() {
+    @FXML
+    private void handleBtnNumber7() {
         if (inputValue.addDot( "7" ).equals( "." )) {
             cashLabel.setText( inputValue.toString() );
         } else {
             appendNumberToInput( "7" );
         }
     }
-
+    @FXML
     public void handleBtnNumber8() {
         if (inputValue.addDot( "8" ).equals( "." )) {
             cashLabel.setText( inputValue.toString() );
@@ -110,33 +110,34 @@ public class PointOfSaleController implements Initializable{
             appendNumberToInput( "8" );
         }
     }
-
-    public void handleBtnNumber9() {
+    @FXML
+    private void handleBtnNumber9() {
         if (inputValue.addDot( "9" ).equals( "." )) {
             cashLabel.setText( inputValue.toString() );
         } else {
             appendNumberToInput( "9" );
         }
     }
+    @FXML
     public void handleBtnNumberDot() {
         inputValue.addDot( "." );
         cashLabel.setText( inputValue.toString() );
     }
-
-    public void handleBtnCE() {
+    @FXML
+    private void handleBtnCE() {
         inputValue.setCheckdot("");
         inputValue.setCheck1("");
         inputValue.setCheck2("");
         inputValue.getNumber();
         cashLabel.setText(inputValue.toString());
     }
-
-    public void handleBtnDelete() {
+    @FXML
+    private void handleBtnDelete() {
         inputValue.deleteNumber();
         cashLabel.setText(inputValue.toString());
     }
-
-    public void handleBtnLogout(ActionEvent event) throws IOException {
+    @FXML
+    private void handleBtnLogout(ActionEvent event) throws IOException {
         Button button = (Button) event.getSource();
         Stage stage = (Stage) button.getScene().getWindow();
         if (isCashier){
@@ -149,19 +150,15 @@ public class PointOfSaleController implements Initializable{
             stage.show();
         }
     }
-
-    public void handleBtnDone() {
+    @FXML
+    private void handleBtnEnter() {
         if (cashLabel.getText().equals("")){
             cashLabel.setText("0.00");
         }
         if (Double.parseDouble(cashLabel.getText()) >= totalBaht){
             double enterBaht = Double.parseDouble(cashLabel.getText());
             double change = enterBaht-totalBaht;
-            System.out.println("Enter : "+enterBaht);
-            System.out.println("Total : "+totalBaht);
-            System.out.println("Change : "+String.valueOf(change));
-            System.out.println(changeLabel);
-//            changeLabel.setText(String.format("%.2f",String.valueOf(change).toString())); error
+            changeLabel.setText(String.format("%.2f",Float.parseFloat(String.valueOf(change))));
             this.payButton.setDisable(false);
         }
     }
@@ -169,6 +166,11 @@ public class PointOfSaleController implements Initializable{
     private void appendNumberToInput(String n) {
         inputValue.appendNumber(n);
         cashLabel.setText(inputValue.toString());
+    }
+
+    @FXML
+    private void handleBtnVoucher(ActionEvent event){
+
     }
 
     @FXML
@@ -186,12 +188,15 @@ public class PointOfSaleController implements Initializable{
         texLabel.setText(String.format("%.2f",taxBaht));
         totalLabel.setText(String.format("%.2f",totalBaht));
         cashLabel.setText("");
+        changeLabel.setText("0.00");
         this.handleBtnCE();
         this.payButton.setDisable(true);
+        this.enterButton.setDisable(true);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        this.enterButton.setDisable(true);
         this.payButton.setDisable(true);
         posTableView.setItems(edit.loadMenu());
         posTableView.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
@@ -216,6 +221,7 @@ public class PointOfSaleController implements Initializable{
                     netLabel.setText(String.format("%.2f",netBaht));
                     texLabel.setText(String.format("%.2f",taxBaht));
                     totalLabel.setText(String.format("%.2f",totalBaht));
+                    enterButton.setDisable(false);
                 }
             }
         });
@@ -241,6 +247,11 @@ public class PointOfSaleController implements Initializable{
                     netLabel.setText(String.format("%.2f",netBaht));
                     texLabel.setText(String.format("%.2f",taxBaht));
                     totalLabel.setText(String.format("%.2f",totalBaht));
+                    if(!listOrder.isEmpty()){
+                        enterButton.setDisable(false);
+                    } else {
+                        enterButton.setDisable(true);
+                    }
                 }
             }
         });

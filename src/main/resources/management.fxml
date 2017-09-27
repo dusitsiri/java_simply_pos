@@ -21,10 +21,7 @@
                <MenuItem fx:id="item1" mnemonicParsing="false" onAction="#typeFood" text="Food" />
                <MenuItem fx:id="item2" mnemonicParsing="false" onAction="#typeFood" text="Drink" />
                <MenuItem fx:id="item3" mnemonicParsing="false" onAction="#typeFood" text="Dessert" />
-           </items>
-         <font>
-            <Font size="30.0" />
-         </font>
+           </items><font><Font size="30.0" /></font>
        </MenuButton>
 
       <TableView fx:id="tableView" layoutX="14.0" layoutY="58.0" prefHeight="460.0" prefWidth="604.0">
@@ -35,7 +32,7 @@
           <TableColumn minWidth="0.0" prefWidth="96.0" text="Price"><cellValueFactory><PropertyValueFactory property="price" /></cellValueFactory></TableColumn>
         </columns>
       </TableView>
-      <Label layoutX="14.0" styleClass="homeTitle" text="Management"><font><Font size="40.0" /></font></Label>
+      <Label layoutX="14.0" styleClass="homeTitle" text="Sales Management"><font><Font size="40.0" /></font></Label>
       <Button layoutX="667.0" layoutY="434.0" mnemonicParsing="false" onAction="#addMenu" prefHeight="69.0" prefWidth="360.0" text="Done"><font><Font size="30.0" /></font></Button>
       <Button layoutX="443.0" layoutY="522.0" mnemonicParsing="false" onAction="#deleteMenu" prefHeight="69.0" prefWidth="175.0" text="Delete"><font><Font size="30.0" /></font></Button>
       <Button layoutX="229.0" layoutY="522.0" mnemonicParsing="false" onAction="#editMenu" prefHeight="69.0" prefWidth="175.0" text="Edit"><font><Font size="30.0" /></font></Button>

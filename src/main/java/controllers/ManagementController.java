@@ -66,8 +66,8 @@ public class ManagementController implements Initializable {
 
     public void editMenu(ActionEvent event) throws IOException {
         if (tableView.getSelectionModel().getSelectedItem() != null) {
-            Button editMenu = (Button) event.getSource();
-            Stage stage = (Stage) editMenu.getScene().getWindow();
+            Button button = (Button) event.getSource();
+            Stage stage = (Stage) button.getScene().getWindow();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/edit-food.fxml"));
             stage.setScene(new Scene(loader.load()));
             EditMenuController editMenuController = loader.getController();
@@ -77,8 +77,8 @@ public class ManagementController implements Initializable {
     }
 
     public void backOnAction(ActionEvent event) throws IOException {
-        Button editMenu = (Button) event.getSource();
-        Stage stage = (Stage) editMenu.getScene().getWindow();
+        Button button = (Button) event.getSource();
+        Stage stage = (Stage) button.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/home.fxml"));
         stage.setScene(new Scene(loader.load()));
         stage.show();

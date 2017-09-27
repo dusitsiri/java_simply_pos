@@ -30,7 +30,7 @@ public class HomeController {
         stage.show();
     }
 
-    public void logoutOnClick(ActionEvent event) throws IOException{
+    public void logoutOnClick(ActionEvent event) throws IOException {
         Button button = (Button) event.getSource();
         Stage stage = (Stage) button.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/login.fxml"));
@@ -38,11 +38,19 @@ public class HomeController {
         stage.show();
     }
 
-    public void employeesOnClick(ActionEvent event) {
+    public void reportsOnClick(ActionEvent event) {
 
     }
 
-    public void reportsOnClick(ActionEvent event) {
+    public void accountsOnClick(ActionEvent event) {
 
+    }
+
+    public void aboutOnClick(ActionEvent event) throws IOException {
+        Button button = (Button) event.getSource();
+        Stage stage = (Stage) button.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/about.fxml"));
+        stage.setScene(new Scene(loader.load()));
+        stage.show();
     }
 }
