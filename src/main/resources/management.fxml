@@ -13,7 +13,6 @@
 <?import javafx.scene.text.Font?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1080.0" styleClass="theBackground" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ManagementController">
-   <children>
        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="460.0" layoutX="649.0" layoutY="58.0" stroke="#e4dfdf" strokeType="INSIDE" width="397.0" />
        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="65.0" layoutX="666.0" layoutY="82.0" stroke="WHITE" strokeType="INSIDE" width="360.0" />
        <MenuButton fx:id="typeFoodButton" layoutX="748.0" layoutY="342.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="278.0" text="Food">
@@ -43,5 +42,4 @@
       <Label layoutX="659.0" layoutY="342.0" prefHeight="65.0" prefWidth="79.0" text="Type"><font><Font size="30.0" /></font></Label>
       <Label layoutX="658.0" layoutY="183.0" text="Name"><font><Font size="30.0" /></font></Label>
       <Label layoutX="666.0" layoutY="266.0" text="Price"><font><Font size="30.0" /></font></Label>
-   </children>
 </Pane>
