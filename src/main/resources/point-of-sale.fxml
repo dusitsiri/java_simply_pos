@@ -16,7 +16,7 @@
     <children>
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#29b6f6" height="304.0" layoutX="360.0" layoutY="114.0" stroke="BLACK" strokeType="INSIDE" width="313.0" />
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="174.0" layoutX="699.0" layoutY="4.0" stroke="#dad8d8" strokeType="INSIDE" width="378.0" />
-        <TableView fx:id="posTableView" prefHeight="519.0" prefWidth="341.0">
+        <TableView fx:id="posTableView" prefHeight="518.0" prefWidth="341.0">
             <columns>
                 <TableColumn minWidth="0.0" prefWidth="71.0" text="Type"><cellValueFactory><PropertyValueFactory property="type" /></cellValueFactory></TableColumn>
                 <TableColumn prefWidth="185.0" text="Name"><cellValueFactory><PropertyValueFactory property="nameFood" /></cellValueFactory></TableColumn>
