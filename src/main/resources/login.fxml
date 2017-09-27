@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1080.0" styleClass="theLoginBackground" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
+
+    <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="366.0" layoutX="644.0" layoutY="64.0" stroke="#e4dfdf" strokeType="INSIDE" width="363.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="60" layoutX="680.0" layoutY="100.0" stroke="WHITE" strokeType="INSIDE" width="287.0" />
+        <GridPane alignment="CENTER" layoutX="700.0" layoutY="50.0" prefHeight="300.0" prefWidth="250.0">
+            <columnConstraints><ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" /></columnConstraints>
+            <rowConstraints>
+                <RowConstraints maxHeight="55.0" minHeight="55.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="55.0" minHeight="55.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="55.0" minHeight="65.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="55.0" minHeight="65.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="55.0" minHeight="55.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="55.0" minHeight="55.0" prefHeight="20.0" vgrow="SOMETIMES" />
+            <RowConstraints />
+            </rowConstraints>
+            <children>
+                <TextField fx:id="userName" alignment="TOP_LEFT" prefHeight="15.0" prefWidth="250.0" promptText="Username" styleClass="inputSection" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER"><font><Font size="25.0" /></font></TextField>
+                <PasswordField fx:id="userPassword" alignment="TOP_LEFT" prefHeight="10.0" prefWidth="250.0" promptText="Password" styleClass="inputSection" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER"><font><Font size="25.0" /></font></PasswordField>
+                <Label prefHeight="65.0" prefWidth="230.0" styleClass="loginTitle" text="The Cashier" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER"><font><Font size="44.0" /></font></Label>
+                <Button mnemonicParsing="false" onAction="#loginOnClick" prefHeight="44.0" prefWidth="267.0" text="Log in" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER"><font><Font name="System Bold" size="24.0" /></font></Button>
+                <Text fx:id="warningText" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="warningText" GridPane.rowIndex="6" />
+            </children>
+        </GridPane>
+      <ImageView fitHeight="717.0" fitWidth="564.0" layoutX="-6.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true"><image><Image url="@image-login.png" /></image></ImageView>
+      <Label layoutX="602.0" layoutY="571.0" text="Copyright © 2017 The Cashier. All rights reserved. ">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+    </children>
+</Pane>
