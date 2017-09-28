@@ -13,5 +13,5 @@
    <Label layoutX="300.0" layoutY="115.0" text="The Cashier"><font><Font size="30.0" /></font></Label>
    <Label layoutX="300.0" layoutY="179.0" text="Version 1.2 (Build 5)"><font><Font size="30.0" /></font></Label>
    <Label layoutX="300.0" layoutY="243.0" text="Copyright © 2017 The Cashier. All rights reserved. "><font><Font size="30.0" /></font></Label>
-   <ImageView fitHeight="216.0" fitWidth="231.0" layoutX="68.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true"><Image url="@CashRegister.png" /></ImageView>
+   <ImageView fitHeight="216.0" fitWidth="231.0" layoutX="68.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true"><Image url="@cash-register.png" /></ImageView>
 </Pane>

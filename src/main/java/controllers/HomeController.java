@@ -1,7 +1,6 @@
 package controllers;
 
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -25,7 +24,7 @@ public class HomeController {
     public void managementOnClick(ActionEvent event) throws IOException{
         Button button = (Button) event.getSource();
         Stage stage = (Stage) button.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/management.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/sales-management.fxml"));
         stage.setScene(new Scene(loader.load()));
         stage.show();
     }
@@ -38,12 +37,20 @@ public class HomeController {
         stage.show();
     }
 
-    public void reportsOnClick(ActionEvent event) {
-
+    public void reportsOnClick(ActionEvent event) throws IOException{
+        Button button = (Button) event.getSource();
+        Stage stage = (Stage) button.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/sales-report.fxml"));
+        stage.setScene(new Scene(loader.load()));
+        stage.show();
     }
 
-    public void accountsOnClick(ActionEvent event) {
-
+    public void accountsOnClick(ActionEvent event) throws IOException{
+        Button button = (Button) event.getSource();
+        Stage stage = (Stage) button.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/accounts-management.fxml"));
+        stage.setScene(new Scene(loader.load()));
+        stage.show();
     }
 
     public void aboutOnClick(ActionEvent event) throws IOException {

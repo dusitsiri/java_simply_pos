@@ -34,6 +34,6 @@
          <font>
             <Font size="25.0" />
          </font></Text>
-        <ImageView fitHeight="717.0" fitWidth="564.0" layoutX="32.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true"><Image url="@CashRegister.png" /></ImageView>
+        <ImageView fitHeight="717.0" fitWidth="564.0" layoutX="32.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true"><Image url="@cash-register.png" /></ImageView>
       <Label layoutX="602.0" layoutY="571.0" text="Copyright © 2017 The Cashier. All rights reserved. "><font><Font size="20.0" /></font></Label>
 </Pane>

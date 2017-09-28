@@ -40,7 +40,7 @@ public class EditMenuController {
         this.menu.setNameFood(nameFood.getText());
         this.menu.setPrice(Double.parseDouble(price.getText()));
         this.menu.setType(typeFoodButton.getText());
-        ManagementController.edit.editDB(this.menu.getId(),this.menu.getType(),this.menu.getNameFood(),this.menu.getPrice());
+        SalesManagementController.edit.editDB(this.menu.getId(),this.menu.getType(),this.menu.getNameFood(),this.menu.getPrice());
         this.backToManagementWindow(event);
     }
 
@@ -51,7 +51,7 @@ public class EditMenuController {
     private void backToManagementWindow(ActionEvent event){
         Button cancelToMenu = (Button) event.getSource();
         Stage stage = (Stage) cancelToMenu.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/management.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/sales-management.fxml"));
         try {
             stage.setScene(new Scene(loader.load(), 1080, 600));
             stage.show();

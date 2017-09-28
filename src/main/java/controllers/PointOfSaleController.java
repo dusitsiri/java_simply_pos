@@ -1,5 +1,6 @@
 package controllers;
 
+import javafx.scene.control.TextInputDialog;
 import models.Menu;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,7 +22,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
-import static controllers.ManagementController.edit;
+import static controllers.SalesManagementController.edit;
 
 public class PointOfSaleController implements Initializable{
     private InputValue inputValue = new InputValue();
@@ -170,7 +171,12 @@ public class PointOfSaleController implements Initializable{
 
     @FXML
     private void handleBtnVoucher(ActionEvent event){
-
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.setTitle("Voucher");
+        dialog.setHeaderText(null);
+        dialog.setContentText("Voucher Code:");
+        Optional<String> result = dialog.showAndWait();
+        result.ifPresent(voucherCode -> System.out.println("Voucher Code: " + voucherCode));
     }
 
     @FXML

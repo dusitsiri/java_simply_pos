@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ManagementController implements Initializable {
+public class SalesManagementController implements Initializable {
 
     public static MenuDB edit = new MenuDB();
 
