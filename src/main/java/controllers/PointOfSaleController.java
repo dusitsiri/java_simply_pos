@@ -161,6 +161,8 @@ public class PointOfSaleController implements Initializable{
             double change = enterBaht-totalBaht;
             changeLabel.setText(String.format("%.2f",Float.parseFloat(String.valueOf(change))));
             this.payButton.setDisable(false);
+        } else {
+            this.payButton.setDisable(true);
         }
     }
 
