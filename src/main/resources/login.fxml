@@ -15,9 +15,9 @@
 <?import javafx.scene.text.Text?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1080.0" styleClass="theBackground" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="366.0" layoutX="644.0" layoutY="117.0" stroke="#e4dfdf" strokeType="INSIDE" width="363.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="291.0" layoutX="644.0" layoutY="117.0" stroke="#e4dfdf" strokeType="INSIDE" width="363.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="60" layoutX="681.0" layoutY="139.0" stroke="WHITE" strokeType="INSIDE" width="287.0" />
-        <GridPane alignment="CENTER" layoutX="701.0" layoutY="139.0" prefHeight="252.0" prefWidth="247.0">
+        <GridPane alignment="CENTER" layoutX="682.0" layoutY="139.0" prefHeight="252.0" prefWidth="287.0">
             <columnConstraints><ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" /></columnConstraints>
             <rowConstraints>
                 <RowConstraints maxHeight="55.0" minHeight="55.0" prefHeight="20.0" vgrow="SOMETIMES" />
@@ -25,10 +25,10 @@
                 <RowConstraints maxHeight="55.0" minHeight="65.0" prefHeight="20.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="55.0" minHeight="55.0" prefHeight="20.0" vgrow="SOMETIMES" />
             </rowConstraints>
-                <Label prefHeight="65.0" prefWidth="230.0" styleClass="loginTitle" text="The Cashier" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS"><font><Font size="44.0" /></font></Label>
+                <Label alignment="CENTER" prefHeight="65.0" prefWidth="290.0" styleClass="loginTitle" text="The Cashier" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS"><font><Font size="44.0" /></font></Label>
                 <TextField fx:id="userName" alignment="TOP_LEFT" prefHeight="15.0" prefWidth="250.0" promptText="Username" styleClass="inputSection" GridPane.rowIndex="1"><font><Font size="25.0" /></font></TextField>
                 <PasswordField fx:id="userPassword" alignment="TOP_LEFT" prefHeight="10.0" prefWidth="250.0" promptText="Password" styleClass="inputSection" GridPane.rowIndex="2"><font><Font size="25.0" /></font></PasswordField>
-                <Button mnemonicParsing="false" onAction="#loginOnClick" prefHeight="44.0" prefWidth="267.0" text="Log in" GridPane.rowIndex="3"><font><Font name="System Bold" size="24.0" /></font></Button>
+                <Button mnemonicParsing="false" onAction="#loginOnClick" prefHeight="51.0" prefWidth="290.0" text="Log in" GridPane.rowIndex="3"><font><Font name="System Bold" size="24.0" /></font></Button>
         </GridPane>
         <Text fx:id="warningText" layoutX="655.0" layoutY="434.0" strokeWidth="0.0" styleClass="warningText" wrappingWidth="342.0000025033951" GridPane.rowIndex="6">
          <font>

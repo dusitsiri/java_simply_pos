@@ -34,7 +34,7 @@ public class LoginController {
             stage.show();
             warningText.setText("");
         }else {
-            warningText.setText("Incorrect username and/or password!");
+            warningText.setText("The username or password provided is incorrect.");
         }
     }
 }
