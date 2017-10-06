@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class EditMenuController {
+public class EditSalesController {
     Menu menu;
     @FXML
     private MenuButton typeFoodButton;

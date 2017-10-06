@@ -54,6 +54,9 @@ public class SalesManagementController implements Initializable {
             Double price = Double.parseDouble(textPrice.getText());
             edit.saveDB(id, typeFood, nameFood, price);
             tableView.setItems(edit.loadMenu());
+//            typeFoodButton.getText();
+            textFood.setText("");
+            textPrice.setText("");
         }
     }
 
@@ -70,8 +73,8 @@ public class SalesManagementController implements Initializable {
             Stage stage = (Stage) button.getScene().getWindow();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/edit-food.fxml"));
             stage.setScene(new Scene(loader.load()));
-            EditMenuController editMenuController = loader.getController();
-            editMenuController.setEditMenu(tableView.getSelectionModel().getSelectedItem());
+            EditSalesController editSalesController = loader.getController();
+            editSalesController.setEditMenu(tableView.getSelectionModel().getSelectedItem());
             stage.show();
         }
     }

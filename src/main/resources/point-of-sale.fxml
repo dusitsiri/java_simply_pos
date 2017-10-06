@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1080.0" styleClass="theBackground" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PointOfSaleController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1080.0" styleClass="theBackground" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PointOfSaleController">
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#29b6f6" height="304.0" layoutX="360.0" layoutY="114.0" stroke="BLACK" strokeType="INSIDE" width="313.0" />
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="174.0" layoutX="695.0" layoutY="4.0" stroke="#dad8d8" strokeType="INSIDE" width="383.0" />
         <TableView fx:id="posTableView" prefHeight="518.0" prefWidth="341.0">
@@ -74,14 +74,14 @@
                 <RowConstraints maxHeight="48.0" minHeight="0.0" prefHeight="32.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="41.666656494140625" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
             </rowConstraints>
-                <Label nodeOrientation="LEFT_TO_RIGHT" prefHeight="90.0" prefWidth="153.0" text="TOTAL:"><font><Font size="43.0" /></font></Label>
+                <Label nodeOrientation="LEFT_TO_RIGHT" prefHeight="53.0" prefWidth="180.0" text="TOTAL:"><font><Font size="43.0" /></font></Label>
                 <Label fx:id="totalLabel" alignment="BASELINE_RIGHT" contentDisplay="RIGHT" prefHeight="73.0" prefWidth="215.0" text="0.00" GridPane.columnIndex="1"><font><Font size="50.0" /></font></Label>
                 <Label prefHeight="31.0" prefWidth="237.0" text="TAX :" GridPane.rowIndex="4"><font><Font size="25.0" /></font></Label>
                 <Label fx:id="texLabel" alignment="BOTTOM_RIGHT" prefHeight="36.0" prefWidth="215.0" text="0.00" GridPane.columnIndex="1" GridPane.rowIndex="4"><font><Font size="25.0" /></font></Label>
                 <Label fx:id="netLabel" alignment="BOTTOM_RIGHT" prefHeight="36.0" prefWidth="215.0" text="0.00" GridPane.columnIndex="1" GridPane.rowIndex="3"><font><Font size="25.0" /></font></Label>
-                <Label prefHeight="43.0" prefWidth="144.0" text="Change:" textFill="RED" GridPane.rowIndex="1"><font><Font size="40.0" /></font></Label>
+                <Label prefHeight="43.0" prefWidth="179.0" text="Change:" textFill="RED" GridPane.rowIndex="1"><font><Font size="40.0" /></font></Label>
                 <Label fx:id="changeLabel" alignment="BOTTOM_RIGHT" prefHeight="73.0" prefWidth="215.0" text="0.00" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="1"><font><Font size="50.0" /></font></Label>
-                <Label text="Discount:" GridPane.rowIndex="2"><font><Font size="25.0" /></font></Label>
+                <Label prefHeight="30.0" prefWidth="165.0" text="Discount:" GridPane.rowIndex="2"><font><Font size="25.0" /></font></Label>
                 <Label alignment="BOTTOM_RIGHT" prefHeight="36.0" prefWidth="215.0" text="0.00" GridPane.columnIndex="1" GridPane.rowIndex="2"><font><Font size="25.0" /></font></Label>
                 <Label prefHeight="32.0" prefWidth="216.0" text="NET :" GridPane.rowIndex="3"><font><Font size="25.0" /></font></Label>
         </GridPane>

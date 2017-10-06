@@ -39,6 +39,11 @@ public class AccountsManagementController {
             String password = passwordText.getText();
             accountsDB.saveAccountsDB(id, department, firstName, lastName, username, password);
             accountsTableView.setItems(accountsDB.loadAccounts());
+            departmentText.setText("");
+            firstNameText.setText("");
+            lastNameText.setText("");
+            usernameText.setText("");
+            passwordText.setText("");
         }
     }
 
