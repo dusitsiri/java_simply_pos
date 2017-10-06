@@ -56,7 +56,7 @@ public class LoginController {
         boolean loginSuccess = false;
         for (Accounts i : accounts){
             if (i.getUsername().equals(userName.getText()) && i.getPassword().equals(userPassword.getText())){
-                if (i.getDepartment().equals("cashier")){
+                if (i.getDepartment().equals("Cashier")){
                     this.loginToPointOfSale(stage);
                 } else {
                     this.loginToHome(stage);
