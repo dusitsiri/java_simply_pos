@@ -71,7 +71,7 @@ public class SalesManagementController implements Initializable {
         if (tableView.getSelectionModel().getSelectedItem() != null) {
             Button button = (Button) event.getSource();
             Stage stage = (Stage) button.getScene().getWindow();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/edit-food.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/edit-sale.fxml"));
             stage.setScene(new Scene(loader.load()));
             EditSalesController editSalesController = loader.getController();
             editSalesController.setEditMenu(tableView.getSelectionModel().getSelectedItem());
