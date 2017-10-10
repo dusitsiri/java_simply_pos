@@ -1,5 +1,6 @@
 package controllers;
 
+import databases.SaleReportsDB;
 import javafx.scene.control.TextInputDialog;
 import models.Menu;
 import javafx.collections.FXCollections;
@@ -17,6 +18,7 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import models.InputValue;
+import models.SaleReport;
 
 import java.io.IOException;
 import java.net.URL;
@@ -30,6 +32,7 @@ public class PointOfSaleController implements Initializable{
     private double taxBaht = 0;
     private double totalBaht = 0;
     private boolean isCashier;
+    private SaleReportsDB saleReportsDB = SaleReportsDB.getSelf();
 
     @FXML
     private Label netLabel, cashLabel, totalLabel, texLabel, changeLabel;
@@ -187,6 +190,10 @@ public class PointOfSaleController implements Initializable{
     private ObservableList<Menu> listOrder = FXCollections.observableArrayList();
 
     public void bthPay(){
+        for (Menu i : customerOrderTableView.getItems()){
+            SaleReport saleReport = new SaleReport(i.getType(),i.getNameFood(),i.getPrice(),new Date());
+            saleReportsDB.writeSaleReport(saleReport);
+        }
         listOrder = FXCollections.observableArrayList();
         customerOrderTableView.setItems(listOrder);
         netBaht = 0;
