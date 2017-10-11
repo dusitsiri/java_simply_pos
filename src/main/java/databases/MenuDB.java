@@ -23,7 +23,8 @@ public class MenuDB {
                     String typeFood = resultSet.getString(2);
                     String nameFood = resultSet.getString(3);
                     Double price = resultSet.getDouble(4);
-                    menu.add(new Menu(id, typeFood, nameFood, price));
+                    Double cost = resultSet.getDouble(5);
+                    menu.add(new Menu(id, typeFood, nameFood, price, cost));
                 }
                 //close connection
                 conn.close();
@@ -36,13 +37,13 @@ public class MenuDB {
         return menu;
     }
 
-    public void saveDB(int id, String typeFood, String nameFood, Double price) {
+    public void saveDB(int id, String typeFood, String nameFood, Double price, Double cost) {
         try {
             Class.forName("org.sqlite.JDBC");
             String dbURL = "jdbc:sqlite:Menu.db";
             Connection connection = DriverManager.getConnection(dbURL);
             if (connection != null) {
-                String query = "insert into Menu(id, Type, Name_Food, Price) values (\'" + id + "\', \'" + typeFood + "\' , \'" + nameFood + "\',\'" + price + "')";
+                String query = "insert into Menu(id, Type, Name_Food, Price, Cost) values (\'" + id + "\', \'" + typeFood + "\' , \'" + nameFood + "\',\'" + price + "\',\'" + cost + "')";
                 PreparedStatement p = connection.prepareStatement(query);
                 p.executeUpdate();
                 connection.close();
@@ -93,13 +94,13 @@ public class MenuDB {
         return 1;
     }
 
-    public void editDB(int id, String typeFood, String nameFood, double price) {
+    public void editDB(int id, String typeFood, String nameFood, double price, double cost) {
         try {
             Class.forName("org.sqlite.JDBC");
             String dbURL = "jdbc:sqlite:Menu.db";
             Connection connection = DriverManager.getConnection(dbURL);
             if (connection != null) {
-                String query = "update Menu set id=\'" + id + "\' ,Type=\'" + typeFood + "\' ,Name_Food=\'" + nameFood + "\' ,Price=\'" + price + "\' where ID == \'" + id + "\'";
+                String query = "update Menu set id=\'" + id + "\' ,Type=\'" + typeFood + "\' ,Name_Food=\'" + nameFood + "\' ,Price=\'" + price + "\' ,Cost=\'" + cost + "\' where ID == \'" + id + "\'";
                 System.out.println(query);
                 PreparedStatement p = connection.prepareStatement(query);
                 p.executeUpdate();

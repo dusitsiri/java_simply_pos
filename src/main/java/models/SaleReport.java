@@ -9,17 +9,19 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class SaleReport {
-    private SimpleIntegerProperty id = new SimpleIntegerProperty(0);
-    private SimpleStringProperty type = new SimpleStringProperty("");
-    private SimpleStringProperty nameFood = new SimpleStringProperty("");
-    private SimpleDoubleProperty price = new SimpleDoubleProperty(0);
-    private Date date;
 
-    public SaleReport(String type, String nameFood, double price, Date date){
-        this.type.set(type);
-        this.nameFood.set(nameFood);
-        this.price.set(price);
+    private SimpleIntegerProperty id = new SimpleIntegerProperty(0);
+    private Menu menu;
+    private Date date;
+    private SimpleIntegerProperty quantity = new SimpleIntegerProperty(0);
+    private SimpleDoubleProperty total = new SimpleDoubleProperty(0);
+
+    public SaleReport(int id ,Menu menu, Date date, int quantity, double total){
+        this.id.set(id);
         this.date = date;
+        this.quantity.set(quantity);
+        this.total.set(total);
+        this.menu = menu;
     }
 
     public String getDate(){
@@ -28,21 +30,29 @@ public class SaleReport {
         return date.substring(6,10)+"-"+date.substring(3,5)+"-"+date.substring(0,2);
     }
 
-    public String getTime(){
-        SimpleDateFormat formatTime = new SimpleDateFormat("HH:mm");
-        String time = formatTime.format(this.date.getTime());
-        return time;
-    }
-
     public int getId() {
         return id.get();
     }
 
-    public String getType(){ return type.get();}
+    public int getIdMenu() { return this.menu.getId(); }
 
-    public String getNameFood() { return nameFood.get(); }
+    public String getType(){ return this.menu.getType();}
+
+    public String getNameFood() { return this.menu.getNameFood(); }
 
     public double getPrice() {
-        return price.get();
+        return this.menu.getPrice();
+    }
+
+    public int getQuantity() {
+        return quantity.get();
+    }
+
+    public double getTotal() {
+        return total.get();
+    }
+
+    public double getCost() {
+        return this.menu.getCost();
     }
 }

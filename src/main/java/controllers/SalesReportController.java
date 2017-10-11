@@ -21,6 +21,9 @@ public class SalesReportController {
 
     public void initialize() throws ParseException, SQLException, ClassNotFoundException {
         tableView.setItems(saleReportDB.loadSaleReports());
+//        for (SaleReport i : tableView.getItems()){
+//            i.getCost()
+//        }
     }
 
     public void backOnAction(ActionEvent event) throws IOException {

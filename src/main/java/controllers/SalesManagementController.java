@@ -24,6 +24,8 @@ public class SalesManagementController implements Initializable {
     private TextField textFood;
     @FXML
     private TextField textPrice;
+    @FXML
+    private TextField textCost;
 
     @FXML
     private MenuButton typeFoodButton;
@@ -52,7 +54,8 @@ public class SalesManagementController implements Initializable {
             String typeFood = typeFoodButton.getText();
             String nameFood = textFood.getText();
             Double price = Double.parseDouble(textPrice.getText());
-            edit.saveDB(id, typeFood, nameFood, price);
+            Double cost = Double.parseDouble(textCost.getText());
+            edit.saveDB(id, typeFood, nameFood, price, cost);
             tableView.setItems(edit.loadMenu());
 //            typeFoodButton.getText();
             textFood.setText("");

@@ -191,7 +191,7 @@ public class PointOfSaleController implements Initializable{
 
     public void bthPay(){
         for (Menu i : customerOrderTableView.getItems()){
-            SaleReport saleReport = new SaleReport(i.getType(),i.getNameFood(),i.getPrice(),new Date());
+            SaleReport saleReport = new SaleReport(i.getId(),i,new Date(),1,i.getPrice());
             saleReportsDB.writeSaleReport(saleReport);
         }
         listOrder = FXCollections.observableArrayList();

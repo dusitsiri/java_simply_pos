@@ -2,6 +2,7 @@ package databases;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import models.Menu;
 import models.SaleReport;
 
 import java.sql.*;
@@ -33,20 +34,24 @@ public class SaleReportsDB {
             Statement statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
-                String typeFood = resultSet.getString(1);
-                String nameFood = resultSet.getString(2);
-                Double price = resultSet.getDouble(3);
-                String date = resultSet.getString(4);
-                String time = resultSet.getString(5);
+                int id = resultSet.getInt(1);
+                int idMenu = resultSet.getInt(2);
+                String typeFood = resultSet.getString(3);
+                String nameFood = resultSet.getString(4);
+                String date = resultSet.getString(5);
+                int quantity = resultSet.getInt(6);
+                double cost = resultSet.getDouble(7);
+                double price = resultSet.getDouble(8);
+                double total = resultSet.getDouble(9);
 
                 int day = Integer.parseInt(date.substring(8,10));
                 int month = Integer.parseInt(date.substring(5,7));
                 int year = Integer.parseInt(date.substring(0,4));
 
-                DateFormat dateTimeFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-                Date dateGen = dateTimeFormat.parse(day+"/"+month+"/"+year+" "+time);
+                DateFormat dateTimeFormat = new SimpleDateFormat("dd/MM/yyyy");
+                Date dateGen = dateTimeFormat.parse(day+"/"+month+"/"+year);
 
-                saleReports.add(new SaleReport(typeFood, nameFood, price, dateGen));
+                saleReports.add(new SaleReport(id, new Menu(idMenu,typeFood,nameFood,price,cost), dateGen,quantity , total));
             }
             //close connection
             conn.close();
@@ -59,9 +64,22 @@ public class SaleReportsDB {
             Class.forName("org.sqlite.JDBC");
             String dbURL = "jdbc:sqlite:SaleReport.db";
             Connection connection = DriverManager.getConnection(dbURL);
+            boolean have = false;
             if (connection != null) {
-                String query = "insert into saleReports(type, nameFood, price, date, time) values (\'" + saleReport.getType() + "\' , \'" + saleReport.getNameFood() + "\',\'" + saleReport.getPrice() + "\',\'" + saleReport.getDate()  + "\',\'" + saleReport.getTime() + "')";
-                PreparedStatement p = connection.prepareStatement(query);
+                String query = "select * from saleReports where nameFood like \'" + saleReport.getNameFood() + "\' and date like \'" + saleReport.getDate() + "\'";
+                Statement statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery(query);
+                while (resultSet.next()) {
+                    have = true;
+                    break;
+                }
+                String query1;
+                if (have == false){
+                    query1 = "insert into saleReports(idMenu, type, nameFood, date, quantity, price, cost, total) values (\'" + saleReport.getIdMenu() + "\' , \'" + saleReport.getType() + "\', \'" + saleReport.getNameFood() + "\',\'" + saleReport.getDate() + "\',\'" + saleReport.getQuantity() + "\',\'" + saleReport.getPrice() + "\',\'" + saleReport.getCost() + "\',\'" + saleReport.getPrice()  + "')";
+                } else {
+                    query1 = "update saleReports set quantity = quantity+1, total = total+price where nameFood == \'" + saleReport.getNameFood() + "\'";
+                }
+                PreparedStatement p = connection.prepareStatement(query1);
                 p.executeUpdate();
                 connection.close();
             }

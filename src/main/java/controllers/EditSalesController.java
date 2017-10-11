@@ -17,7 +17,7 @@ public class EditSalesController {
     @FXML
     private MenuItem item1,item2,item3;
     @FXML
-    private TextField nameFood,price;
+    private TextField nameFood,price,cost;
 
     public void typeFood(ActionEvent event) {
         if (event.getTarget().equals(item1)) {
@@ -34,13 +34,15 @@ public class EditSalesController {
         nameFood.setText(this.menu.getNameFood());
         price.setText(String.valueOf(this.menu.getPrice()));
         typeFoodButton.setText(this.menu.getType());
+        cost.setText(String.valueOf(this.menu.getCost()));
     }
 
     public void editMenu(ActionEvent event){
         this.menu.setNameFood(nameFood.getText());
         this.menu.setPrice(Double.parseDouble(price.getText()));
         this.menu.setType(typeFoodButton.getText());
-        SalesManagementController.edit.editDB(this.menu.getId(),this.menu.getType(),this.menu.getNameFood(),this.menu.getPrice());
+        this.menu.setCost(Double.parseDouble(cost.getText()));
+        SalesManagementController.edit.editDB(this.menu.getId(),this.menu.getType(),this.menu.getNameFood(),this.menu.getPrice(),this.menu.getCost());
         this.backToManagementWindow(event);
     }
 
