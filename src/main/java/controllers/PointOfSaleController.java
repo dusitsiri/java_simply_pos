@@ -24,7 +24,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
-import static controllers.SalesManagementController.edit;
+import static controllers.SalesController.menuDB;
 
 public class PointOfSaleController implements Initializable{
     private InputValue inputValue = new InputValue();
@@ -213,7 +213,7 @@ public class PointOfSaleController implements Initializable{
     public void initialize(URL url, ResourceBundle rb) {
         this.enterButton.setDisable(true);
         this.payButton.setDisable(true);
-        posTableView.setItems(edit.loadMenu());
+        posTableView.setItems(menuDB.loadMenu());
         posTableView.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {

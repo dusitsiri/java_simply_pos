@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class EditSalesController {
+public class CreateSalesController {
     Menu menu;
     @FXML
     private MenuButton typeFoodButton;
@@ -37,23 +37,35 @@ public class EditSalesController {
         cost.setText(String.valueOf(this.menu.getCost()));
     }
 
-    public void editMenu(ActionEvent event){
-        this.menu.setNameFood(nameFood.getText());
-        this.menu.setPrice(Double.parseDouble(price.getText()));
-        this.menu.setType(typeFoodButton.getText());
-        this.menu.setCost(Double.parseDouble(cost.getText()));
-        SalesManagementController.edit.editDB(this.menu.getId(),this.menu.getType(),this.menu.getNameFood(),this.menu.getPrice(),this.menu.getCost());
-        this.backToManagementWindow(event);
+    public void saveItem(ActionEvent event){
+        if (menu == null) {
+            if (!nameFood.getText().isEmpty() && !price.getText().isEmpty() && !typeFoodButton.getText().equals("Type of Food") && !cost.getText().isEmpty()) {
+                SalesController.menuDB.saveDB(SalesController.menuDB.getCreateID(), typeFoodButton.getText(), nameFood.getText(), Double.parseDouble(price.getText()), Double.parseDouble(cost.getText()));
+                nameFood.setText("");
+                price.setText("");
+                cost.setText("");
+                typeFoodButton.setText("Type of Food");
+                backToManagementWindow(event);
+            }
+
+        } else {
+            menu.setNameFood(nameFood.getText());
+            menu.setPrice(Double.parseDouble(price.getText()));
+            menu.setCost(Double.parseDouble(cost.getText()));
+            menu.setType(typeFoodButton.getText());
+            SalesController.menuDB.editDB(this.menu.getId(), this.menu.getType(), this.menu.getNameFood(), this.menu.getPrice(), this.menu.getCost());
+            backToManagementWindow(event);
+        }
     }
 
     public void cancelToMenu(ActionEvent event){
-        this.backToManagementWindow(event);
+        backToManagementWindow(event);
     }
 
     private void backToManagementWindow(ActionEvent event){
         Button cancelToMenu = (Button) event.getSource();
         Stage stage = (Stage) cancelToMenu.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/sales-management.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/sales.fxml"));
         try {
             stage.setScene(new Scene(loader.load(), 1080, 600));
             stage.show();

@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
 
-public class SalesReportController {
+public class ReportController {
     @FXML
     private TableView<SaleReport> tableView;
     private SaleReportsDB saleReportDB = SaleReportsDB.getSelf();
