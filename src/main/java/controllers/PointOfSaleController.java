@@ -37,7 +37,7 @@ public class PointOfSaleController implements Initializable{
     @FXML
     private Label netLabel, cashLabel, totalLabel, texLabel, changeLabel;
     @FXML
-    private Button payButton, oneButton, twoButton, threeButton, fourButton, fiveButton, sixButton, sevenButton, eightButton, nineButton, zeroButton, deleteButton, enterButton, dotButton, logoutButton, backspaceButton;
+    private Button payButton, enterButton, logoutButton;
 
     public PointOfSaleController() {
         isCashier = true;
@@ -194,6 +194,7 @@ public class PointOfSaleController implements Initializable{
             SaleReport saleReport = new SaleReport(i.getId(),i,new Date(),1,i.getPrice());
             saleReportsDB.writeSaleReport(saleReport);
         }
+        //clear
         listOrder = FXCollections.observableArrayList();
         customerOrderTableView.setItems(listOrder);
         netBaht = 0;
@@ -207,6 +208,7 @@ public class PointOfSaleController implements Initializable{
         this.handleBtnCE();
         this.payButton.setDisable(true);
         this.enterButton.setDisable(true);
+        //
     }
 
     @Override

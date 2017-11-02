@@ -52,6 +52,12 @@
             <version>5.0.0-RC3</version>
             <scope>test</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.jfxtras/jfxtras-labs -->
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>5.0.0.RELEASE</version>
+        </dependency>
+
     </dependencies>
 </project>
