@@ -53,7 +53,6 @@ public class SaleReportsDB {
 
                 saleReports.add(new SaleReport(id, new Menu(idMenu,typeFood,nameFood,price,cost), dateGen,quantity , total));
             }
-            //close connection
             conn.close();
         }
         return saleReports;
@@ -89,4 +88,23 @@ public class SaleReportsDB {
             e.printStackTrace();
         }
     }
+
+    public void deleteDB(int id) {
+        try {
+            Class.forName("org.sqlite.JDBC");
+            String dbURL = "jdbc:sqlite:SaleReport.db";
+            Connection connection = DriverManager.getConnection(dbURL);
+            if (connection != null) {
+                String query = "Delete from saleReports where id == \'" + id + "\'";
+                PreparedStatement p = connection.prepareStatement(query);
+                p.executeUpdate();
+                connection.close();
+            }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

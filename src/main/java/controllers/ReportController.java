@@ -21,9 +21,6 @@ public class ReportController {
 
     public void initialize() throws ParseException, SQLException, ClassNotFoundException {
         tableView.setItems(saleReportDB.loadSaleReports());
-//        for (SaleReport i : tableView.getItems()){
-//            i.getCost()
-//        }
     }
 
     public void backOnAction(ActionEvent event) throws IOException {
@@ -32,5 +29,20 @@ public class ReportController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/home.fxml"));
         stage.setScene(new Scene(loader.load()));
         stage.show();
+    }
+
+    public void deleteItem() {
+        if (tableView.getSelectionModel().getSelectedItem() != null) {
+            saleReportDB.deleteDB(tableView.getSelectionModel().getSelectedItem().getId());
+            try {
+                tableView.setItems(saleReportDB.loadSaleReports());
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
