@@ -22,26 +22,91 @@ import models.SaleReport;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.*;
+import java.util.Date;
+import java.util.Optional;
+import java.util.ResourceBundle;
 
 import static controllers.SalesController.menuDB;
 
-public class PointOfSaleController implements Initializable{
+public class PointOfSaleController implements Initializable {
+    private ObservableList<Menu> listOrder = FXCollections.observableArrayList();
     private InputValue inputValue = new InputValue();
     private double netBaht = 0;
     private double taxBaht = 0;
     private double totalBaht = 0;
     private boolean isCashier;
     private SaleReportsDB saleReportsDB = SaleReportsDB.getSelf();
-
-    @FXML
-    private Label netLabel, cashLabel, totalLabel, texLabel, changeLabel;
-    @FXML
-    private Button payButton, enterButton, logoutButton;
+    @FXML private TableView<Menu> posTableView,customerOrderTableView;
+    @FXML private Label netLabel, cashLabel, totalLabel, texLabel, changeLabel;
+    @FXML private Button payButton, enterButton, logoutButton;
 
     public PointOfSaleController() {
         isCashier = true;
     }
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        this.enterButton.setDisable(true);
+        this.payButton.setDisable(true);
+        posTableView.setItems(menuDB.loadMenu());
+        posTableView.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if(event.getButton() == MouseButton.SECONDARY) {
+                    addMenuToOrder();
+                }else{
+                    addMenuToOrder();
+                }
+            }
+            private void addMenuToOrder(){
+                if (posTableView.getSelectionModel().getSelectedItem() != null){
+                    listOrder.add(posTableView.getSelectionModel().getSelectedItem());
+                    customerOrderTableView.setItems(listOrder);
+                    double currentNetBaht = posTableView.getSelectionModel().getSelectedItem().getPrice();
+                    double currentTaxBaht = (currentNetBaht*7)/100;
+                    double currentTotalBaht = currentNetBaht+currentTaxBaht;
+                    netBaht += currentNetBaht;
+                    taxBaht += currentTaxBaht;
+                    totalBaht += currentTotalBaht;
+                    netLabel.setText(String.format("%.2f",netBaht));
+                    texLabel.setText(String.format("%.2f",taxBaht));
+                    totalLabel.setText(String.format("%.2f",totalBaht));
+                    enterButton.setDisable(false);
+                }
+            }
+        });
+        customerOrderTableView.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if (event.getButton() == MouseButton.SECONDARY) {
+                    deleteMenuOrder();
+                } else {
+                    deleteMenuOrder();
+                }
+            }
+            private void deleteMenuOrder(){
+                if (customerOrderTableView.getSelectionModel().getSelectedItem() != null){
+                    double currentNetBaht = customerOrderTableView.getSelectionModel().getSelectedItem().getPrice();
+                    double currentTaxBaht = (currentNetBaht*7)/100;
+                    double currentTotalBaht = currentNetBaht+currentTaxBaht;
+                    listOrder.remove(customerOrderTableView.getSelectionModel().getSelectedIndex());
+                    customerOrderTableView.setItems(listOrder);
+                    netBaht -= currentNetBaht;
+                    taxBaht -= currentTaxBaht;
+                    totalBaht -= currentTotalBaht;
+                    netLabel.setText(String.format("%.2f",netBaht));
+                    texLabel.setText(String.format("%.2f",taxBaht));
+                    totalLabel.setText(String.format("%.2f",totalBaht));
+                    if(!listOrder.isEmpty()){
+                        enterButton.setDisable(false);
+                    } else {
+                        enterButton.setDisable(true);
+                    }
+                }
+            }
+        });
+    }
+
     @FXML
     private void handleBtnNumber0() {
         if (inputValue.addDot( "0" ).equals( "." )) {
@@ -163,9 +228,9 @@ public class PointOfSaleController implements Initializable{
             double enterBaht = Double.parseDouble(cashLabel.getText());
             double change = enterBaht-totalBaht;
             changeLabel.setText(String.format("%.2f",Float.parseFloat(String.valueOf(change))));
-            this.payButton.setDisable(false);
+            payButton.setDisable(false);
         } else {
-            this.payButton.setDisable(true);
+            payButton.setDisable(true);
         }
     }
 
@@ -175,26 +240,22 @@ public class PointOfSaleController implements Initializable{
     }
 
     @FXML
-    private void handleBtnVoucher(ActionEvent event){
+    private void handleBtnVoucher(){
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Voucher");
         dialog.setHeaderText(null);
         dialog.setContentText("Voucher Code:");
         Optional<String> result = dialog.showAndWait();
-        result.ifPresent(voucherCode -> System.out.println("Voucher Code: " + voucherCode));
+        result.ifPresent(voucherCode -> totalBaht = totalBaht - Double.parseDouble(voucherCode));
+        totalLabel.setText(String.format("%.2f",totalBaht));
     }
 
     @FXML
-    private TableView<Menu> posTableView,customerOrderTableView;
-
-    private ObservableList<Menu> listOrder = FXCollections.observableArrayList();
-
-    public void bthPay(){
+    private void bthPay(){
         for (Menu i : customerOrderTableView.getItems()){
             SaleReport saleReport = new SaleReport(i.getId(),i,new Date(),1,i.getPrice());
             saleReportsDB.writeSaleReport(saleReport);
         }
-        //clear
         listOrder = FXCollections.observableArrayList();
         customerOrderTableView.setItems(listOrder);
         netBaht = 0;
@@ -205,73 +266,9 @@ public class PointOfSaleController implements Initializable{
         totalLabel.setText(String.format("%.2f",totalBaht));
         cashLabel.setText("");
         changeLabel.setText("0.00");
-        this.handleBtnCE();
-        this.payButton.setDisable(true);
-        this.enterButton.setDisable(true);
-        //
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        this.enterButton.setDisable(true);
-        this.payButton.setDisable(true);
-        posTableView.setItems(menuDB.loadMenu());
-        posTableView.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                if(event.getButton() == MouseButton.SECONDARY) {
-                    this.addMenuToOrder();
-                }else{
-                    this.addMenuToOrder();
-                }
-            }
-            private void addMenuToOrder(){
-                if (posTableView.getSelectionModel().getSelectedItem() != null){
-                    listOrder.add(posTableView.getSelectionModel().getSelectedItem());
-                    customerOrderTableView.setItems(listOrder);
-                    double currentNetBaht = posTableView.getSelectionModel().getSelectedItem().getPrice();
-                    double currentTaxBaht = (currentNetBaht*7)/100;
-                    double currentTotalBaht = currentNetBaht+currentTaxBaht;
-                    netBaht += currentNetBaht;
-                    taxBaht += currentTaxBaht;
-                    totalBaht += currentTotalBaht;
-                    netLabel.setText(String.format("%.2f",netBaht));
-                    texLabel.setText(String.format("%.2f",taxBaht));
-                    totalLabel.setText(String.format("%.2f",totalBaht));
-                    enterButton.setDisable(false);
-                }
-            }
-        });
-        customerOrderTableView.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                if (event.getButton() == MouseButton.SECONDARY) {
-                    this.deleteMenuOrder();
-                } else {
-                    this.deleteMenuOrder();
-                }
-            }
-            private void deleteMenuOrder(){
-                if (customerOrderTableView.getSelectionModel().getSelectedItem() != null){
-                    double currentNetBaht = customerOrderTableView.getSelectionModel().getSelectedItem().getPrice();
-                    double currentTaxBaht = (currentNetBaht*7)/100;
-                    double currentTotalBaht = currentNetBaht+currentTaxBaht;
-                    listOrder.remove(customerOrderTableView.getSelectionModel().getSelectedIndex());
-                    customerOrderTableView.setItems(listOrder);
-                    netBaht -= currentNetBaht;
-                    taxBaht -= currentTaxBaht;
-                    totalBaht -= currentTotalBaht;
-                    netLabel.setText(String.format("%.2f",netBaht));
-                    texLabel.setText(String.format("%.2f",taxBaht));
-                    totalLabel.setText(String.format("%.2f",totalBaht));
-                    if(!listOrder.isEmpty()){
-                        enterButton.setDisable(false);
-                    } else {
-                        enterButton.setDisable(true);
-                    }
-                }
-            }
-        });
+        handleBtnCE();
+        payButton.setDisable(true);
+        enterButton.setDisable(true);
     }
 
     public void setCashier(boolean cashier) {
@@ -281,4 +278,5 @@ public class PointOfSaleController implements Initializable{
     public Button getLogoutButton() {
         return logoutButton;
     }
+
 }
