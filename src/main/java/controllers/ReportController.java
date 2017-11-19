@@ -1,6 +1,8 @@
 package controllers;
 
 import databases.SaleReportsDB;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,12 +17,19 @@ import java.sql.SQLException;
 import java.text.ParseException;
 
 public class ReportController {
-    @FXML
-    private TableView<SaleReport> tableView;
+    @FXML private Button deleteButton;
+    @FXML private TableView<SaleReport> reportTableView;
     private SaleReportsDB saleReportDB = SaleReportsDB.getSelf();
 
     public void initialize() throws ParseException, SQLException, ClassNotFoundException {
-        tableView.setItems(saleReportDB.loadSaleReports());
+        deleteButton.setDisable(true);
+        reportTableView.setItems(saleReportDB.loadSaleReports());
+        reportTableView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<SaleReport>() {
+            @Override
+            public void changed(ObservableValue<? extends SaleReport> observable, SaleReport oldValue, SaleReport newValue) {
+                deleteButton.setDisable(false);
+            }
+        });
     }
 
     public void backOnAction(ActionEvent event) throws IOException {
@@ -31,18 +40,11 @@ public class ReportController {
         stage.show();
     }
 
-    public void deleteItem() {
-        if (tableView.getSelectionModel().getSelectedItem() != null) {
-            saleReportDB.deleteDB(tableView.getSelectionModel().getSelectedItem().getId());
-            try {
-                tableView.setItems(saleReportDB.loadSaleReports());
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
+    public void deleteItem() throws ParseException, SQLException, ClassNotFoundException {
+        if (reportTableView.getSelectionModel().getSelectedItem() != null) {
+            saleReportDB.deleteDB(reportTableView.getSelectionModel().getSelectedItem().getId());
+            reportTableView.setItems(saleReportDB.loadSaleReports());
+            deleteButton.setDisable(true);
         }
     }
 }

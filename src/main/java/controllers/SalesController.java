@@ -17,9 +17,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class SalesController implements Initializable {
-
     public static MenuDB menuDB = new MenuDB();
-
     @FXML private TableView<Menu> tableView;
     @FXML private Button deleteButton,editButton;
 
@@ -49,6 +47,8 @@ public class SalesController implements Initializable {
         if (tableView.getSelectionModel().getSelectedItem() != null) {
             menuDB.deleteDB(tableView.getSelectionModel().getSelectedItem().getId());
             tableView.setItems(menuDB.loadMenu());
+            deleteButton.setDisable(true);
+            editButton.setDisable(true);
         }
     }
 
@@ -71,5 +71,4 @@ public class SalesController implements Initializable {
         stage.setScene(new Scene(loader.load()));
         stage.show();
     }
-
 }

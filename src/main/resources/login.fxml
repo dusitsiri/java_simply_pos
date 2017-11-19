@@ -27,11 +27,11 @@
                 <TextField fx:id="userName" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" promptText="Username" styleClass="inputSection" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER"><font><Font size="25.0" /></font></TextField>
                 <PasswordField fx:id="userPassword" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" promptText="Password" styleClass="inputSection" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER"><font><Font size="25.0" /></font>
          <GridPane.margin>
-            <Insets top="5.0" />
+            <Insets />
          </GridPane.margin></PasswordField>
                 <Button fx:id="loginBtn" alignment="CENTER" mnemonicParsing="false" onAction="#loginOnClick" prefHeight="60.0" prefWidth="300.0" text="Log in" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER"><font><Font name="System Bold" size="24.0" /></font>
          <GridPane.margin>
-            <Insets top="10.0" />
+            <Insets top="5.0" />
          </GridPane.margin></Button>
         </GridPane>
         <Text fx:id="warningText" layoutX="655.0" layoutY="434.0" strokeWidth="0.0" styleClass="warningText" wrappingWidth="342.0000025033951" GridPane.rowIndex="6">

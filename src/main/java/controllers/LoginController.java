@@ -65,8 +65,8 @@ public class LoginController {
                 break;
             }
         }
-        if(loginSuccess == false){
-            warningText.setText("The username or password provided is incorrect.");
+        if(!loginSuccess){
+            warningText.setText("Username or Password is incorrect");
         }
     }
 
