@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class SalesController implements Initializable {
@@ -45,10 +46,16 @@ public class SalesController implements Initializable {
 
     public void deleteItem() {
         if (tableView.getSelectionModel().getSelectedItem() != null) {
-            menuDB.deleteDB(tableView.getSelectionModel().getSelectedItem().getId());
-            tableView.setItems(menuDB.loadMenu());
-            deleteButton.setDisable(true);
-            editButton.setDisable(true);
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Do you want to delete " +
+                    tableView.getSelectionModel().getSelectedItem().getNameFood() + " ?",
+                    ButtonType.OK, ButtonType.CANCEL);
+            Optional optional = alert.showAndWait();
+            if (optional.get() == ButtonType.OK) {
+                menuDB.deleteDB(tableView.getSelectionModel().getSelectedItem().getId());
+                tableView.setItems(menuDB.loadMenu());
+                deleteButton.setDisable(true);
+                editButton.setDisable(true);
+            }
         }
     }
 

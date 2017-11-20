@@ -7,12 +7,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import models.Accounts;
 
 import java.io.IOException;
+import java.util.Optional;
 
 
 public class AccountsController {
@@ -49,10 +52,17 @@ public class AccountsController {
 
     public void deleteAccount() {
         if (accountsTableView.getSelectionModel().getSelectedItem() != null) {
-            accountsDB.deleteAccountsDB(accountsTableView.getSelectionModel().getSelectedItem().getId());
-            accountsTableView.setItems(accountsDB.loadAccounts());
-            deleteButton.setDisable(true);
-            editButton.setDisable(true);
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Do you want to delete " +
+                    accountsTableView.getSelectionModel().getSelectedItem().getFirstname() +" "+
+                    accountsTableView.getSelectionModel().getSelectedItem().getLastname() + " ?",
+                    ButtonType.OK, ButtonType.CANCEL);
+            Optional optional = alert.showAndWait();
+            if (optional.get() == ButtonType.OK) {
+                accountsDB.deleteAccountsDB(accountsTableView.getSelectionModel().getSelectedItem().getId());
+                accountsTableView.setItems(accountsDB.loadAccounts());
+                deleteButton.setDisable(true);
+                editButton.setDisable(true);
+            }
         }
     }
 

@@ -30,12 +30,12 @@ public class LoginController {
 
     public void initialize(){
         accounts = accountsDB.loadAccounts();
-        loginBtn.setOnKeyPressed(new EventHandler<KeyEvent>() {
+        userPassword.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
             if (event.getCode() == KeyCode.ENTER){
-                Button button = (Button) event.getSource();
-                Stage stage = (Stage) button.getScene().getWindow();
+                PasswordField passwordField = (PasswordField) event.getSource();
+                Stage stage = (Stage) passwordField.getScene().getWindow();
                 try {
                     checkUsernameAndPassword(stage);
                 } catch (IOException e) {

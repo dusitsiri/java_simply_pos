@@ -7,7 +7,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import models.SaleReport;
@@ -15,6 +17,7 @@ import models.SaleReport;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.Optional;
 
 public class ReportController {
     @FXML private Button deleteButton;
@@ -42,9 +45,15 @@ public class ReportController {
 
     public void deleteItem() throws ParseException, SQLException, ClassNotFoundException {
         if (reportTableView.getSelectionModel().getSelectedItem() != null) {
-            saleReportDB.deleteDB(reportTableView.getSelectionModel().getSelectedItem().getId());
-            reportTableView.setItems(saleReportDB.loadSaleReports());
-            deleteButton.setDisable(true);
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Do you want to delete " +
+                    reportTableView.getSelectionModel().getSelectedItem().getNameFood()+ " ?",
+                    ButtonType.OK, ButtonType.CANCEL);
+            Optional optional = alert.showAndWait();
+            if (optional.get() == ButtonType.OK) {
+                saleReportDB.deleteDB(reportTableView.getSelectionModel().getSelectedItem().getId());
+                reportTableView.setItems(saleReportDB.loadSaleReports());
+                deleteButton.setDisable(true);
+            }
         }
     }
 }
