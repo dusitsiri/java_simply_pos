@@ -17,7 +17,6 @@ import models.Accounts;
 import java.io.IOException;
 import java.util.Optional;
 
-
 public class AccountsController {
 
     static AccountsDB accountsDB = new AccountsDB();
@@ -26,7 +25,6 @@ public class AccountsController {
     private TableView<Accounts> accountsTableView;
     @FXML
     private Button deleteButton,editButton;
-
 
     public void initialize() {
         editButton.setDisable(true);
@@ -49,7 +47,6 @@ public class AccountsController {
         stage.show();
     }
 
-
     public void deleteAccount() {
         if (accountsTableView.getSelectionModel().getSelectedItem() != null) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Do you want to delete " +
@@ -65,7 +62,6 @@ public class AccountsController {
             }
         }
     }
-
 
     public void backOnAction(ActionEvent event) throws IOException {
         Button button = (Button) event.getSource();
@@ -86,5 +82,4 @@ public class AccountsController {
             stage.show();
         }
     }
-
 }
