@@ -76,14 +76,14 @@
             </rowConstraints>
                 <Label nodeOrientation="LEFT_TO_RIGHT" prefHeight="53.0" prefWidth="180.0" text="TOTAL:"><font><Font size="43.0" /></font></Label>
                 <Label fx:id="totalLabel" alignment="BASELINE_RIGHT" contentDisplay="RIGHT" prefHeight="73.0" prefWidth="215.0" text="0.00" GridPane.columnIndex="1"><font><Font size="50.0" /></font></Label>
-                <Label prefHeight="31.0" prefWidth="237.0" text="TAX :" GridPane.rowIndex="4"><font><Font size="25.0" /></font></Label>
+                <Label prefHeight="31.0" prefWidth="237.0" text="TAX:" GridPane.rowIndex="4"><font><Font size="25.0" /></font></Label>
                 <Label fx:id="texLabel" alignment="BOTTOM_RIGHT" prefHeight="36.0" prefWidth="215.0" text="0.00" GridPane.columnIndex="1" GridPane.rowIndex="4"><font><Font size="25.0" /></font></Label>
                 <Label fx:id="netLabel" alignment="BOTTOM_RIGHT" prefHeight="36.0" prefWidth="215.0" text="0.00" GridPane.columnIndex="1" GridPane.rowIndex="3"><font><Font size="25.0" /></font></Label>
                 <Label prefHeight="43.0" prefWidth="179.0" text="Change:" textFill="RED" GridPane.rowIndex="1"><font><Font size="40.0" /></font></Label>
                 <Label fx:id="changeLabel" alignment="BOTTOM_RIGHT" prefHeight="73.0" prefWidth="215.0" text="0.00" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="1"><font><Font size="50.0" /></font></Label>
-                <Label prefHeight="30.0" prefWidth="165.0" text="Discount:" GridPane.rowIndex="2"><font><Font size="25.0" /></font></Label>
+                <Label prefHeight="30.0" prefWidth="180.0" text="Discount:" GridPane.rowIndex="2"><font><Font size="25.0" /></font></Label>
                 <Label alignment="BOTTOM_RIGHT" prefHeight="36.0" prefWidth="215.0" text="0.00" GridPane.columnIndex="1" GridPane.rowIndex="2"><font><Font size="25.0" /></font></Label>
-                <Label prefHeight="32.0" prefWidth="216.0" text="NET :" GridPane.rowIndex="3"><font><Font size="25.0" /></font></Label>
+                <Label prefHeight="32.0" prefWidth="216.0" text="NET:" GridPane.rowIndex="3"><font><Font size="25.0" /></font></Label>
         </GridPane>
         <Label fx:id="cashLabel" alignment="BOTTOM_RIGHT" layoutX="342.0" layoutY="25.0" prefHeight="73.0" prefWidth="353.0" text="0.00"><font><Font size="42.0" /></font></Label>
 </Pane>
