@@ -3,8 +3,6 @@ package models;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
-import java.util.Date;
-
 public class SaleReport {
 
     private SimpleIntegerProperty id = new SimpleIntegerProperty(0);

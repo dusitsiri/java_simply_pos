@@ -11,12 +11,6 @@ public class Menu {
     private SimpleDoubleProperty price = new SimpleDoubleProperty(0);
     private SimpleDoubleProperty cost = new SimpleDoubleProperty(0);
 
-//    public Menu(String type, String nameFood, int quantity, double price) {
-//        setType(type);
-//        setNameFood(nameFood);
-//        setPrice(price);
-//    }
-
     public Menu(int id, String type, String nameFood, double price, double cost) {
         setId(id);
         setType(type);
@@ -56,8 +50,5 @@ public class Menu {
     public void setCost(double cost) {
         this.cost.set(cost);
     }
-//
-//    public int getQuantity() { return quantity.get(); }
-//
-//    public void setQuantity(int quantity) { this.quantity.set(quantity); }
+
 }

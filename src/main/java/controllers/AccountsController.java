@@ -18,13 +18,9 @@ import java.io.IOException;
 import java.util.Optional;
 
 public class AccountsController {
-
     static AccountsDB accountsDB = new AccountsDB();
-
-    @FXML
-    private TableView<Accounts> accountsTableView;
-    @FXML
-    private Button deleteButton,editButton;
+    @FXML private TableView<Accounts> accountsTableView;
+    @FXML private Button deleteButton,editButton;
 
     public void initialize() {
         editButton.setDisable(true);

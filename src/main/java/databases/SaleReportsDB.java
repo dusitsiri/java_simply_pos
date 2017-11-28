@@ -4,13 +4,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import models.Menu;
 import models.SaleReport;
-import utilities.DateUtilities;
 
 import java.sql.*;
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class SaleReportsDB {
 

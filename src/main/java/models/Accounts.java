@@ -3,11 +3,11 @@ package models;
 public class Accounts {
 
     private int id = 0;
-    private String department = "";
-    private String firstname = "";
-    private String lastname = "";
-    private String username = "";
-    private String password = "";
+    private String department;
+    private String firstname;
+    private String lastname;
+    private String username;
+    private String password;
 
     public Accounts(int id, String department, String firstname, String lastname, String username, String password) {
         this.id = id;

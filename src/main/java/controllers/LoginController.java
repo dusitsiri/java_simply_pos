@@ -25,7 +25,6 @@ public class LoginController {
     @FXML private Text warningText;
     @FXML private TextField userName;
     @FXML private PasswordField userPassword;
-    @FXML private Button loginBtn;
     private ObservableList<Accounts> accounts;
 
     public void initialize(){

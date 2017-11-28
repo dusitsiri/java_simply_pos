@@ -18,7 +18,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class SalesController implements Initializable {
-    public static MenuDB menuDB = new MenuDB();
+    static MenuDB menuDB = new MenuDB();
     @FXML private TableView<Menu> tableView;
     @FXML private Button deleteButton,editButton;
 

@@ -12,12 +12,9 @@ import java.io.IOException;
 
 public class CreateSalesController {
     Menu menu;
-    @FXML
-    private MenuButton typeFoodButton;
-    @FXML
-    private MenuItem item1,item2,item3;
-    @FXML
-    private TextField nameFood,price,cost;
+    @FXML private MenuButton typeFoodButton;
+    @FXML private MenuItem item1,item2,item3;
+    @FXML private TextField nameFood,price,cost;
 
     public void typeFood(ActionEvent event) {
         if (event.getTarget().equals(item1)) {
