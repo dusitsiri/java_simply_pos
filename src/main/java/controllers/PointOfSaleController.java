@@ -252,10 +252,20 @@ public class PointOfSaleController implements Initializable {
 
     @FXML
     private void bthPay(){
+        String receipt = "The Cashier";
+        System.out.println("The Cashier");
         for (Menu i : customerOrderTableView.getItems()){
+            receipt += "\n"+i.getNameFood()+" "+i.getPrice();
+            System.out.println(i.getNameFood()+" "+i.getPrice());
             SaleReport saleReport = new SaleReport(i.getId(),i,new Date(),1,i.getPrice());
             saleReportsDB.writeSaleReport(saleReport);
         }
+        receipt += "\nNet: "+netBaht+"\nTax: "+taxBaht+"\nTotal: "+totalBaht;
+        System.out.println("Net: "+netBaht);
+        System.out.println("Tax: "+taxBaht);
+        System.out.println("Total: "+totalBaht);
+        this.saleReportsDB.writeReceipt(receipt);
+
         listOrder = FXCollections.observableArrayList();
         customerOrderTableView.setItems(listOrder);
         netBaht = 0;
@@ -269,6 +279,7 @@ public class PointOfSaleController implements Initializable {
         handleBtnCE();
         payButton.setDisable(true);
         enterButton.setDisable(true);
+
     }
 
     public void setCashier(boolean cashier) {

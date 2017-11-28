@@ -107,4 +107,22 @@ public class SaleReportsDB {
         }
     }
 
+    public void writeReceipt(String str){
+        try {
+            Class.forName("org.sqlite.JDBC");
+            String dbURL = "jdbc:sqlite:SaleReport.db";
+            Connection connection = DriverManager.getConnection(dbURL);
+            if (connection != null) {
+                String query = "insert into receipt(detail) values ('" + str + "')";
+                PreparedStatement p = connection.prepareStatement(query);
+                p.executeUpdate();
+                connection.close();
+            }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

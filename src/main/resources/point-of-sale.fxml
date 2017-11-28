@@ -24,9 +24,9 @@
         </TableView>
         <TableView fx:id="customerOrderTableView" layoutX="695.0" layoutY="183.0" prefHeight="335.0" prefWidth="385.0">
             <columns>
-                <TableColumn prefWidth="72.0" text="Type"><cellValueFactory><PropertyValueFactory property="type" /></cellValueFactory></TableColumn>
-                <TableColumn prefWidth="213.0" sortType="DESCENDING" text="Name"><cellValueFactory><PropertyValueFactory property="nameFood" /></cellValueFactory></TableColumn>
-                <TableColumn prefWidth="76.0" text="Price"><cellValueFactory><PropertyValueFactory property="price" /></cellValueFactory></TableColumn>
+                <TableColumn prefWidth="87.0" text="Type"><cellValueFactory><PropertyValueFactory property="type" /></cellValueFactory></TableColumn>
+                <TableColumn prefWidth="202.0" sortType="DESCENDING" text="Name"><cellValueFactory><PropertyValueFactory property="nameFood" /></cellValueFactory></TableColumn>
+                <TableColumn prefWidth="87.0" text="Price"><cellValueFactory><PropertyValueFactory property="price" /></cellValueFactory></TableColumn>
             </columns>
         </TableView>
         <GridPane layoutX="341.0" layoutY="100.0" prefHeight="331.0" prefWidth="354.0">
