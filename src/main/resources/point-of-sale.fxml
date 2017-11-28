@@ -17,8 +17,8 @@
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="174.0" layoutX="695.0" layoutY="4.0" stroke="#dad8d8" strokeType="INSIDE" width="383.0" />
         <TableView fx:id="posTableView" prefHeight="518.0" prefWidth="341.0">
             <columns>
-                <TableColumn minWidth="0.0" prefWidth="71.0" text="Type"><cellValueFactory><PropertyValueFactory property="type" /></cellValueFactory></TableColumn>
-                <TableColumn prefWidth="185.0" text="Name"><cellValueFactory><PropertyValueFactory property="nameFood" /></cellValueFactory></TableColumn>
+                <TableColumn minWidth="0.0" prefWidth="76.0" text="Type"><cellValueFactory><PropertyValueFactory property="type" /></cellValueFactory></TableColumn>
+                <TableColumn prefWidth="180.0" text="Name"><cellValueFactory><PropertyValueFactory property="nameFood" /></cellValueFactory></TableColumn>
                 <TableColumn prefWidth="65.0" text="Price"><cellValueFactory><PropertyValueFactory property="price" /></cellValueFactory></TableColumn>
             </columns>
         </TableView>
