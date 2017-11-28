@@ -19,9 +19,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import models.InputValue;
 import models.SaleReport;
+import utilities.DateUtilities;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -252,18 +255,14 @@ public class PointOfSaleController implements Initializable {
 
     @FXML
     private void bthPay(){
-        String receipt = "The Cashier";
-        System.out.println("The Cashier");
+        String receipt = "The Cashier\n"+ DateUtilities.getDateNumber();
         for (Menu i : customerOrderTableView.getItems()){
             receipt += "\n"+i.getNameFood()+" "+i.getPrice();
-            System.out.println(i.getNameFood()+" "+i.getPrice());
-            SaleReport saleReport = new SaleReport(i.getId(),i,new Date(),1,i.getPrice());
+            SaleReport saleReport = new SaleReport(i.getId(),i,DateUtilities.getDateNumberNoTime(),1,i.getPrice());
             saleReportsDB.writeSaleReport(saleReport);
         }
         receipt += "\nNet: "+netBaht+"\nTax: "+taxBaht+"\nTotal: "+totalBaht;
-        System.out.println("Net: "+netBaht);
-        System.out.println("Tax: "+taxBaht);
-        System.out.println("Total: "+totalBaht);
+        System.out.println(receipt);
         this.saleReportsDB.writeReceipt(receipt);
 
         listOrder = FXCollections.observableArrayList();

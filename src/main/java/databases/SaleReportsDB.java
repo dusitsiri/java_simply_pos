@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import models.Menu;
 import models.SaleReport;
+import utilities.DateUtilities;
 
 import java.sql.*;
 import java.text.DateFormat;
@@ -43,15 +44,7 @@ public class SaleReportsDB {
                 double cost = resultSet.getDouble(7);
                 double price = resultSet.getDouble(8);
                 double total = resultSet.getDouble(9);
-
-                int day = Integer.parseInt(date.substring(8,10));
-                int month = Integer.parseInt(date.substring(5,7));
-                int year = Integer.parseInt(date.substring(0,4));
-
-                DateFormat dateTimeFormat = new SimpleDateFormat("dd/MM/yyyy");
-                Date dateGen = dateTimeFormat.parse(day+"/"+month+"/"+year);
-
-                saleReports.add(new SaleReport(id, new Menu(idMenu,typeFood,nameFood,price,cost), dateGen,quantity , total));
+                saleReports.add(new SaleReport(id, new Menu(idMenu,typeFood,nameFood,price,cost), date,quantity , total));
             }
             conn.close();
         }
